@@ -5,12 +5,18 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-//@RequestMapping("/")
+@RequestMapping("/page")
 public class PageController {
 
-    @RequestMapping("/")
+    @RequestMapping("/index")
     public ModelAndView index(){
         ModelAndView index = new ModelAndView("front/index");
         return index;
+    }
+
+    @RequestMapping("/login")
+    public ModelAndView login(){
+        ModelAndView login = new ModelAndView("front/login");
+        return login;
     }
 }

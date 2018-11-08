@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+用户名：<input id="input-login-username" type="text"/><br/>
+密  码：<input id="input-login-password" type="password"/>
+<button onclick="login()">登录</button>
+</body>
+<script src="/static/front/js/jquery-2.1.4.min.js"></script>
+<script>
+    
+    function login() {
+        var username=$("#input-login-username").val();
+        var password=$("#input-login-password").val();
+        $.ajax({
+            url : "/login/dologin",
+            data : {
+                username:username,
+                password:password
+            },
+            type : 'POST',
+            dataType : "json",
+            success : function(d) {
+                if (d.code == 0) {
+                    //alert("登录成功");
+                    toIndex();
+                } else {
+                    alert("登录失败");
+                }
+            }
+        });
+    }
+
+
+    function toIndex() {
+        $(location).attr('href', '/page/index');//跳转至主界面
+    }
+</script>
+</html>
