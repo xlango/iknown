@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xhy.iknown.mapper.RoleMapper">
+
+    <select id="findAll" resultType="com.xhy.iknown.entity.Role"
+            parameterType="java.util.List">
+		select * from role
+	</select>
+
+    <insert id="add" parameterType="com.xhy.iknown.entity.Role">
+
+    </insert>
+
+    <delete id="delete" parameterType="com.xhy.iknown.entity.Role">
+        delete from role where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.xhy.iknown.entity.Role">
+       </update>
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xhy.iknown.mapper.TypeMapper">
+
+    <select id="findAll" resultType="com.xhy.iknown.entity.Type"
+            parameterType="java.util.List">
+		select * from type
+	</select>
+    <select id="getTypeById" resultType="com.xhy.iknown.entity.Type">
+        select * from type where id=#{id}
+    </select>
+    <insert id="add" parameterType="com.xhy.iknown.entity.Type">
+        insert  into type(name) values(#{name})
+    </insert>
+
+    <delete id="delete" parameterType="com.xhy.iknown.entity.Type">
+        delete from type where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.xhy.iknown.entity.Type">
+        update type set name=#{name} where id=#{id}
+       </update>
+    <select id="gettypebyname"  resultType="com.xhy.iknown.entity.Type"  >
+          select * from type where name=#{name}
+    </select>
+</mapper>

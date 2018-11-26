@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xhy.iknown.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.xhy.iknown.entity.User">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password"
+                jdbcType="VARCHAR" />
+        <result column="email" property="email"
+                jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!-- 查询所有用户信息 -->
+    <select id="findAll" resultType="com.xhy.iknown.entity.User"
+            parameterType="java.util.List">
+		select * from user
+	</select>
+
+    <!-- 根据条件查询用户信息 -->
+    <select id="findbyif" resultType="com.xhy.iknown.entity.User"
+            parameterType="com.xhy.iknown.entity.User">
+        select * from user
+        <!--(where标签自动去掉满足条件的第一个and) -->
+        <where>
+            <if test="id!=null">
+                and id=#{id}
+            </if>
+            <if test="username != null">
+                and username=#{username}
+            </if>
+
+            <if test="password != null">
+                and password=#{password}
+            </if>
+            <if test="email != null">
+                and email=#{email}
+            </if>
+        </where>
+    </select>
+
+    <!-- 增加用户 -->
+    <insert id="add" parameterType="com.xhy.iknown.entity.User">
+        insert into user (username,password,email) values (#{username},#{password},#{email})
+    </insert>
+    <!-- 删除用户 -->
+    <delete id="delete" parameterType="com.xhy.iknown.entity.User">
+        delete from user where id = #{id}
+    </delete>
+    <!-- 修改用户 -->
+    <update id="update" parameterType="com.xhy.iknown.entity.User">
+        update user set username = #{username}, password = #{password}, email = #{email} where id = #{id}
+    </update>
+    <select id="login"  resultType="com.xhy.iknown.entity.User"
+            parameterType="com.xhy.iknown.entity.User">
+        select * from user
+        <!--(where标签自动去掉满足条件的第一个and) -->
+        <where>
+        <if test="username != null">
+            and username=#{username}
+        </if>
+
+        <if test="password != null">
+            and password=#{password}
+        </if>
+        </where>
+    </select>
+</mapper>
