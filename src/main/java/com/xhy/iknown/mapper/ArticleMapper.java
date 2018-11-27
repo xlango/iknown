@@ -3,6 +3,7 @@ package com.xhy.iknown.mapper;
 
 
 import com.xhy.iknown.entity.Article;
+import com.xhy.iknown.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
@@ -19,4 +20,5 @@ public interface ArticleMapper {
 
     void delete(Article article);
 
+    Article findbyif(Article article);
 }

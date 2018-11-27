@@ -26,8 +26,8 @@ public class CommentController {
 
     DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    @RequestMapping(value = "/getCommentByQueIdAndAnsId",method = RequestMethod.GET)
-    public List<Comment> getCommentByQueIdAndAnsId(Comment comment){
+    @RequestMapping(value = "/getCommentByIf",method = RequestMethod.GET)
+    public List<Comment> getCommentByIf(Comment comment){
         List<Comment> commentList = commentService.findbyif(comment);
         return commentList;
     }

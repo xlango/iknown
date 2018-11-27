@@ -12,4 +12,6 @@ public interface ArticleService {
     void update(Article article);
 
     void delete(Article article);
+
+    Article findbyif(Article article);
 }

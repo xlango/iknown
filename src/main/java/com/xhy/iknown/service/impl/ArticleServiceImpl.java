@@ -22,4 +22,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void delete(Article article) {articleMapper.delete(article);}
+
+    @Override
+    public Article findbyif(Article article) {
+        return articleMapper.findbyif(article);
+    }
 }

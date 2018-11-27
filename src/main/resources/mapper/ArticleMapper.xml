@@ -18,4 +18,14 @@
     <update id="update" parameterType="com.xhy.iknown.entity.Article">
     </update>
 
+    <select id="findbyif" resultType="com.xhy.iknown.entity.Article"
+            parameterType="com.xhy.iknown.entity.Article">
+        select * from article
+        <!--(where标签自动去掉满足条件的第一个and) -->
+        <where>
+            <if test="id!=null">
+                and id=#{id}
+            </if>
+        </where>
+    </select>
 </mapper>

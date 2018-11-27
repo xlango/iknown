@@ -33,4 +33,9 @@ public class ArticleController {
         Integer num = commentService.countCommentOfarticle(comment);
         return num;
     }
+    @RequestMapping(value = "/findById",method = RequestMethod.GET)
+    public Article findById(Article article){
+        Article num = articleService.findbyif(article);
+        return num;
+    }
 }

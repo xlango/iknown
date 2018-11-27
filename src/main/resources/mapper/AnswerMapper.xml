@@ -8,7 +8,7 @@
 	</select>
 
     <insert id="add" parameterType="com.xhy.iknown.entity.Answer">
-INSERT into answer(content,questionid,userid,createtime) VALUES(#{content},#{questionid},#{userid},#{createtime})
+INSERT into answer(content,questionid,userid,createtime) VALUES(#{content},#{questionid},#{userid},#{createTime})
     </insert>
 
     <delete id="delete" parameterType="com.xhy.iknown.entity.Answer">

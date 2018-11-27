@@ -25,4 +25,6 @@ public class Article {
     private int commentid;//评论id
     private int liulanliang;//浏览量
  //   private List<Comment> comment;
+    private int zantongshu;
+    private int buzhantongshu;
 }
