@@ -23,4 +23,9 @@ public class UserContoller {
     public List<User> findAll(){
         return userService.findAll();
     }
+
+    @RequestMapping("/getUserById")
+    public User getUserById(User user){
+        return userService.findbyif(user);
+    }
 }

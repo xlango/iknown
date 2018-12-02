@@ -36,14 +36,14 @@ public class LoginController {
         System.out.print(roleId);
         if (user1 != null && roleId == 1) {
             if (user1.getPassword().equals(user.getPassword())) {
-                return ResultUtil.success("success");
+                return ResultUtil.success(user1);
             } else {
                 return ResultUtil.error("password error");
             }
         }
         if (user1 != null && roleId == 2) {
             if (user1.getPassword().equals(user.getPassword())) {
-                return ResultUtil.success("success");
+                return ResultUtil.success(user1);
             } else {
                 return ResultUtil.error("password error");
             }

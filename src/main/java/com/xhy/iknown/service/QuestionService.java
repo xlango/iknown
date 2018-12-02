@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface QuestionService {
     List<Question> findAll();
-    void add(Question qsuestion);
+    int add(Question qsuestion);
 
     void update(Question qsuestion);
 
@@ -15,5 +15,9 @@ public interface QuestionService {
     List<Question> getTopTenByLiulanliang();
 
     Question findbyif(Question question);
+
+    List<Question> findByIspay(boolean ispay);
+
+    List<Question> findsByIf(Question question);
 
 }

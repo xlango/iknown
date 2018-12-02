@@ -27,4 +27,9 @@ public class ArticleServiceImpl implements ArticleService {
     public Article findbyif(Article article) {
         return articleMapper.findbyif(article);
     }
+
+    @Override
+    public List<Article> findsByIf(Article article) {
+        return articleMapper.findsByIf(article);
+    }
 }

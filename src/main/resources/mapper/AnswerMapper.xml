@@ -43,4 +43,15 @@ INSERT into answer(content,questionid,userid,createtime) VALUES(#{content},#{que
             </if>
         </where>
     </select>
+
+    <select id="findsbyif" resultType="com.xhy.iknown.entity.Answer"
+            parameterType="com.xhy.iknown.entity.Answer">
+        select * from answer
+        <!--(where标签自动去掉满足条件的第一个and) -->
+        <where>
+            <if test="userid!=null">
+                and userid=#{userid}
+            </if>
+        </where>
+    </select>
 </mapper>

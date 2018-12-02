@@ -1,15 +1,14 @@
 package com.xhy.iknown.controller;
-import com.xhy.iknown.entity.Article;
-import com.xhy.iknown.entity.Comment;
+import com.xhy.iknown.entity.*;
 import com.xhy.iknown.service.CommentService;
 import com.xhy.iknown.service.impl.ArticleServiceImpl;
 import com.xhy.iknown.service.impl.CommentServiceImpl;
+import com.xhy.iknown.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -37,5 +36,24 @@ public class ArticleController {
     public Article findById(Article article){
         Article num = articleService.findbyif(article);
         return num;
+    }
+
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public Result add(Article article){
+        article.setCreatetime(new Date());
+        articleService.add(article);
+        return ResultUtil.success();
+    }
+
+    @RequestMapping("/all")
+    public List<Article> all(){
+        List<Article> all = articleService.findAll();
+        return all;
+    }
+
+    @PostMapping("/getsByUser")
+    public List<Article> getsByUser(Article article){
+        List<Article> list=articleService.findsByIf(article);
+        return list;
     }
 }

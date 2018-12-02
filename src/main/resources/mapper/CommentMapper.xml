@@ -14,7 +14,7 @@
 		select count(*) from comment where articleid=#{articleid}
 	</select>
     <insert id="add" parameterType="com.xhy.iknown.entity.Comment">
-        insert into comment(answerid,content,createtime,userid,questionid,articleid) VALUES(#{answerid},#{content},#{createtime},#{userid},#{questionid},#{articleid})
+        insert into comment(answerid,content,createtime,userid,questionid,articleid,interestid) VALUES(#{answerid},#{content},#{createtime},#{userid},#{questionid},#{articleid},#{interestid})
     </insert>
 
     <delete id="delete" parameterType="com.xhy.iknown.entity.Comment">
@@ -37,6 +37,9 @@
             </if>
             <if test="articleid!=null">
                 and articleid=#{articleid}
+            </if>
+            <if test="interestid!=null">
+                and interestid=#{interestid}
             </if>
         </where>
     </select>

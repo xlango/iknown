@@ -7,10 +7,11 @@
 		select * from question
 	</select>
 
-
-
-    <insert id="add" parameterType="com.xhy.iknown.entity.Question">
-
+    <insert id="add" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.xhy.iknown.entity.Question" >
+      insert into question(content,createTime,ispay,price,userid,type) values(#{content},#{createTime},#{ispay},#{price},#{userid},#{type})
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
 
     <delete id="delete" parameterType="com.xhy.iknown.entity.Question">
@@ -32,6 +33,30 @@
         <where>
             <if test="id!=null">
                 and id=#{id}
+            </if>
+            <if test="createTime!=null">
+                and createTime=#{createTime}
+            </if>
+        </where>
+    </select>
+
+    <select id="findByIspay" parameterType="java.lang.Boolean" resultType="com.xhy.iknown.entity.Question">
+        SELECT * FROM question WHERE ispay=#{ispay}
+    </select>
+
+    <select id="findsByIf" resultType="com.xhy.iknown.entity.Question"
+            parameterType="com.xhy.iknown.entity.Question">
+        select * from question
+        <!--(where标签自动去掉满足条件的第一个and) -->
+        <where>
+            <if test="type!=null">
+                and type=#{type}
+            </if>
+            <if test="ispay!=null">
+                and ispay=#{ispay}
+            </if>
+            <if test="userid!=null">
+                and userid=#{userid}
             </if>
         </where>
     </select>

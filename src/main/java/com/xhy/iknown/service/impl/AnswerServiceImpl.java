@@ -32,6 +32,12 @@ public class AnswerServiceImpl implements AnswerService {
     public Answer findbyif(Answer answer) {
         return answerMapper.findbyif(answer);
     }
+
+    @Override
+    public List<Answer> findsByIf(Answer answer) {
+        return answerMapper.findsbyif(answer);
+    }
+
     @Override
     public List<Answer> getByQuestionId(Answer answer) {
         return answerMapper.getByQuestionId(answer);

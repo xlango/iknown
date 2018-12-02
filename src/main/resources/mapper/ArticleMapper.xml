@@ -8,7 +8,7 @@
 	</select>
 
     <insert id="add" parameterType="com.xhy.iknown.entity.Article">
-
+       INSERT into article(content,createtime,userid,title,type) VALUES(#{content},#{createtime},#{userid},#{title},#{type})
     </insert>
 
     <delete id="delete" parameterType="com.xhy.iknown.entity.Article">
@@ -25,6 +25,17 @@
         <where>
             <if test="id!=null">
                 and id=#{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="findsByIf" resultType="com.xhy.iknown.entity.Article"
+            parameterType="com.xhy.iknown.entity.Article">
+        select * from article
+        <!--(where标签自动去掉满足条件的第一个and) -->
+        <where>
+            <if test="userid!=null">
+                and userid=#{userid}
             </if>
         </where>
     </select>

@@ -16,7 +16,7 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
    private int id;
    private String  content ;//问题内容
-    private Date createTime;//创建时间
+    private String createTime;//创建时间
     private boolean ispay;//是否为付费问题
     private int price;//价格
     private int zantongnum;//赞
@@ -26,5 +26,6 @@ public class Question {
    private int answerid  ;//回答ID
     private int commentid;//评论Id
     private int liulanliang;//浏览量
+    private String type;
 
 }

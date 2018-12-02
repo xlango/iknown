@@ -21,4 +21,6 @@ public interface AnswerService {
     Answer getByZantongTop(Answer answer);
 
     Answer findbyif(Answer answer);
+
+    List<Answer> findsByIf(Answer answer);
 }

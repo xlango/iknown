@@ -27,4 +27,5 @@ public class Article {
  //   private List<Comment> comment;
     private int zantongshu;
     private int buzhantongshu;
+    private String type;//分类
 }

@@ -58,7 +58,6 @@
         <if test="username != null">
             and username=#{username}
         </if>
-
         <if test="password != null">
             and password=#{password}
         </if>

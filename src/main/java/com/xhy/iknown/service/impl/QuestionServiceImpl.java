@@ -15,7 +15,7 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> findAll() {return questionMapper.findAll(); }
 
     @Override
-    public void add(Question qsuestion) {questionMapper.add(qsuestion);}
+    public int add(Question qsuestion) { return  questionMapper.add(qsuestion);}
 
     @Override
     public void update(Question qsuestion) {questionMapper.update(qsuestion); }
@@ -27,6 +27,17 @@ public class QuestionServiceImpl implements QuestionService {
     public Question findbyif(Question question) {
         return questionMapper.findbyif(question);
     }
+
+    @Override
+    public List<Question> findByIspay(boolean ispay) {
+        return questionMapper.findByIspay(ispay);
+    }
+
+    @Override
+    public List<Question> findsByIf(Question question) {
+        return questionMapper.findsByIf(question);
+    }
+
     @Override
     public List<Question> getTopTenByLiulanliang() {
         return questionMapper.getTopTenByLiulanliang();

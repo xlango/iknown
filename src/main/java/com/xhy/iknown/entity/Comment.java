@@ -23,4 +23,5 @@ public class Comment {
   private Date createtime;//创建时间
     private int articleid;
     private int commentnum;//评论数量
+    private  int  interestid  ;//兴趣id
 }

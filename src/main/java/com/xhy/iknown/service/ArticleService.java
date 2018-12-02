@@ -14,4 +14,6 @@ public interface ArticleService {
     void delete(Article article);
 
     Article findbyif(Article article);
+
+    List<Article> findsByIf(Article article);
 }

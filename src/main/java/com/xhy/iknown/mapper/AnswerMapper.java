@@ -25,4 +25,5 @@ public interface AnswerMapper {
     Answer getByZantongTop(Answer answer);
 
     Answer findbyif(Answer answer);
+    List<Answer> findsbyif(Answer answer);
 }
