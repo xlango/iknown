@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xhy.iknown.mapper.AnswerMapper">
+
+    <select id="findAll" resultType="com.xhy.iknown.entity.Answer"
+            parameterType="java.util.List">
+		select * from answer
+	</select>
+
+    <insert id="add" parameterType="com.xhy.iknown.entity.Answer">
+INSERT into answer(content,questionid,userid,createtime) VALUES(#{content},#{questionid},#{userid},#{createTime})
+    </insert>
+
+    <delete id="delete" parameterType="com.xhy.iknown.entity.Answer">
+        delete from answer where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.xhy.iknown.entity.Answer">
+       </update>
+
+    <select id="getByQuestionId" resultType="com.xhy.iknown.entity.Answer"
+            parameterType="com.xhy.iknown.entity.Answer">
+		select * from answer where questionid=#{questionid}
+	</select>
+
+    <select id="countAnswerByQuestionid" resultType="int"
+            parameterType="com.xhy.iknown.entity.Answer">
+		select count(*) from answer where questionid=#{questionid}
+	</select>
+
+    <select id="getByZantongTop" resultType="com.xhy.iknown.entity.Answer"
+            parameterType="com.xhy.iknown.entity.Answer">
+		select a.* from answer a where 1 > (select  count(*)  from answer where zantongnum > a.zantongnum) and questionid=#{questionid}
+	</select>
+
+    <select id="findbyif" resultType="com.xhy.iknown.entity.Answer"
+            parameterType="com.xhy.iknown.entity.Answer">
+        select * from answer
+        <!--(where标签自动去掉满足条件的第一个and) -->
+        <where>
+            <if test="id!=null">
+                and id=#{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="findsbyif" resultType="com.xhy.iknown.entity.Answer"
+            parameterType="com.xhy.iknown.entity.Answer">
+        select * from answer
+        <!--(where标签自动去掉满足条件的第一个and) -->
+        <where>
+            <if test="userid!=null">
+                and userid=#{userid}
+            </if>
+        </where>
+    </select>
+</mapper>

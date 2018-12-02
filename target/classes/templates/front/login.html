@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>iknown</title>
+<meta http-equiv="content-Type" content="text/html" charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/static/front/css/index.css">
+
+<script type="text/javascript" src="/static/front/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/static/front/js/index.js"></script>
+
+</head>
+<body >
+	<div class="content" >
+		<div class="ucSimpleHeader" >
+			<a href="login.html" class="meizuLogo"></a>
+			<h1 ></h1>
+			<div class="trigger">
+				<a href="/page/login">登录</a>
+				<span>&nbsp;|&nbsp;</span>
+				<a href="/page/register">注册</a>
+			</div>
+		</div>
+		<form id="#mainForm1" class="mainForm mainForm1">
+			<div class="number">
+				<a href="##" class="linkABlue"><h1>邮箱登录</h1></a>
+				<!--
+                <span></span>
+				<a href="##" class="linkAGray number1">用户名登录</a>-->
+			</div>
+			<div class="normalInput">
+				<input id="input-login-username" type="text"   maxlength="32" placeholder="用户名" autocomplete="off">
+				<span class="grayTip">@qq.com</span>
+			</div>
+			<span class="error error1"></span>
+			<!--
+        	<div class="normalInput">
+				<input type="text" class="kapkey" maxlength="6" placeholder="验证码">
+				<span class="formLine"></span>
+				<a href="##" id="getKey" class="linkABlue">获取验证码</a>
+			</div>
+			<span class="error error2"></span>-->
+			<div class="normalInput">
+				<input id="input-login-password" type="text" class="password" name="password" maxlength="16" autocomplete="off" placeholder="密码">
+				<input id="input-login-password1" type="password" class="password1"name="password"  maxlength="16" autocomplete="off" placeholder="密码">
+				<a id="pwdBtn" href="##" class="pwdBtnShow" isshow="false">
+					<i class="i_icon"></i>
+				</a>
+			</div>
+			<span class="error error3"></span>
+			<div class="rememberField">
+				<span class="checkboxPic check_chk" tabindex="-1" isshow="false">
+					<i class="i_icon"></i>
+				</span>
+				<label class="pointer">记住密码</label>
+				
+			</div>
+			<span class="otherError">请确认已阅读并同意乐知iknow服务协议条款</span>
+			<button class="fullBtnBlue" onclick="login()">登录</button>
+		</form>
+
+	</div>
+	<ul class="bRadius2 mail">
+		<li data-mail="@qq.com" class="item item1">@qq.com</li>
+		<li data-mail="@sina.com" class="item item2">@sina.com</li>
+		<li data-mail="@126.com" class="item item3">@126.com</li>
+		<li data-mail="@163.com" class="item item4">@163.com</li>
+		<li data-mail="@gmail.com" class="item item5">@gmail.com</li>
+	</ul>
+	<div id="mz_Float">
+		<div class="mz_FloatBox">
+			<div class="mz3AngleL">
+				<i class="i_icon"></i>
+			</div>
+			<div class="mzFloatTip bRadius2">长度为8-16个字符，区分大小写，至少包含两种类型</div>
+		</div>
+	</div>
+
+
+
+</body>
+<script src="/static/front/js/md5.js"></script>
+<script src="/static/front/js/cookieutils.js"></script>
+
+<script>
+
+    function login() {
+        var username=$("#input-login-username").val();
+        var password=$("#input-login-password").val();
+        $.ajax({
+            url : "/login/dologin",
+            data : {
+                username:username,
+                password:password
+            },
+            type : 'POST',
+            dataType : "json",
+            success : function(d) {
+                if (d.code == 0) {
+                    var passHash = hex_md5(password);
+                    setCookie("username", username);
+                    setCookie("password", passHash);
+                    toIndex();
+                } else {
+                    alert("登录失败");
+                }
+            }
+        });
+    }
+    function toIndex() {
+        $(location).attr('href', '/page/index');//跳转至主界面
+    }
+</script>
+</html>
